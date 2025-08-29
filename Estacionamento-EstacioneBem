@@ -1,0 +1,165 @@
+Pular para o conteúdo principal
+Google Sala de Aula
+Sala de Aula
+2º/2025 Programação de Banco de Dados SQL
+Prof: Karython Gomes - 4º SIS e TADS
+Início
+Agenda
+Minhas inscrições
+Pendentes
+P
+PIN DA CONSULTORIA - 4 Semestres: SiS. e TADS -2/2025
+0
+02/2025 - Auditoria e Segurança da Informação
+01/2025 - Auditoria e Segurança da Informação
+2
+2/2025 - Prog Web I
+4 SIS/TADS
+2
+2/2025 - POO II
+4 SIS/TADS
+2
+2º/2025 Programação de Banco de Dados SQL
+Prof: Karython Gomes - 4º SIS e TADS
+Turmas arquivadas
+Configurações
+Detalhes da atividade
+OAT 1 - DDL, DML e DQL
+karython oliveira
+•
+26 de ago.
+10 pontos
+Data de entrega: 1 de set., 23:59
+Entreguem dentro do prazo.
+Vocês devem entregar um unico arquivo .sql, consta na ultima etapa do documento, junto com o modelo a ser seguido para organização.
+Ferramenta sugerida: Workbranch, conforme visto e sala.
+
+Atividade_SQL_Estacionamento.docx.pdf
+PDF
+Comentários da turma
+Seus trabalhos
+Entregue
+
+bancos de dados de estacionameto e clientes.sql
+SQL
+1 comentário particular
+
+Roberth Kennedy Araujo RochaOntem
+Entregue OAT estacionamento
+Adicionar comentário particular…
+
+--1.Criando tabela de dados 
+create database estacinamento;
+use estacinamento;
+
+
+create table cliente (
+id_cliente int primary key auto_increment
+nome varchar (100)not null
+telefone varchar (30)
+email varchar (100)unique
+endereco varchar(200)
+
+);
+
+create table veiculo (
+id_veiculo int primary key auto_increment
+placa varchar (10) unique not null	
+modelo varchar (50) not null
+cor varchar (50)
+id_cliente int 
+foreign key (id_cliente) references (id_cliente)on delete cascade
+);
+
+create table registro (
+id_registro int primary key auto_increment
+id_veiculo int	
+entrada datetime not null
+saida datetime
+foreign key(id_veiculo) references (id_veiculo) on delete cascade
+);
+--inserir dados dos clientes
+insert into cliente (nome,telefone,email,endereco) values
+('Renta Caps', '11987654444', 'Rento.caps@email.com', 'Rua A, 112, Centro'),
+('Paulo ricardo', '12398765432', 'paulo.ricar@email.com', 'Avenida T, 269, Bairro Novo'),
+('Pedro aurelio', '31975853210', 'pedro.aurelio@email.com', 'Rua 12, Qd 36, casa 10'),
+('Ana pimenta', '41987651222', 'ana.pimenta@email.com', 'Rua P,Qd 10, Cidade Velha'),
+('Roberto Carlos', '61898761234', 'Robertocarlos.p@email.com', 'Avenida Musicas, Cs50, Centro'),
+('jessica gostosa', '69696541234', 'Jessica.g@email.com', 'Rua F, Qd 69, Bairro dos prazeres'),
+('Lucas totty', '23687659876', 'lucas.totty@email.com', 'Avenida t, Qd 710, casa118'),
+('Isabela bela', '81998778490', 'isabela.bela@email.com', 'Rua H, Qd f casa 80, Bairro Legal'),
+('Gustavo adolf', '91976549621', 'gustavo.adolf@email.com', 'Avenida I, Qd 901, Centro'),
+('Bolsonar mito', '218787657622', 'Bolsonaro.mito@email.com', 'Rua presidencia, Qd 2026, Bairro Planalto central');
+
+--inserir dados dos veiculos
+insert into veiculo (placa,modelo,cor,id_cliente) values
+('ABC1233', 'Corsa classic', 'preto', 1),
+('DED5678', 'Ford Kar', 'azul', 1),
+('JHH9012', 'Honda Civic', 'Verde', 2),
+('JKL4646', 'Toyota Corolla', 'Verde', 2),
+('MNN7877', 'Volkswagen Gol', 'Branco', 3),
+('PQP1234', 'Chevrolet S10', 'Azul', 3),
+('SMU5678', 'Jeep Renegade', 'Verde', 4),
+('GHR9012', 'Hyundai HB20', 'Cinza', 4),
+('BMW3456', 'Nissan Kicks', 'Branco', 5),
+('BCD7890', 'Renault Stepe Way', 'Branco', 5),
+('FFS1234', 'Audi A4', 'Azul celeste', 6),
+('HMM5678', 'BMW X5', 'Preto', 6),
+('SLK9012', 'Mercedes-Benz Classe C', 'Prata', 7),
+('MOP3456', 'Tesla Model 5', 'grafite', 7),
+('QWS7890', 'Porsche 911 Carreira S', 'Amarelo', 8),
+('ROB1981', 'Ferrari F8', 'Azul', 8),
+('RKA5678', 'Lamborghini Huracan', 'Verde', 9),
+('LAB9012', 'McLaren 720S', 'Laranja', 9),
+('FOR3458', 'Ford Mustang', 'Preto', 10),
+('FGH7890', 'Chevrolet Camaro', 'Amarelo', 10);
+--inserir dados do registro
+insert into registro (id_veiculo,entrada,saida)
+(1, '2025-08-25 08:01:00', '2025-08-25 10:30:00'),
+(2, '2025-08-25 08:15:00', '2025-08-25 11:15:00'),
+(3, '2025-08-25 09:10:00', '2025-08-25 12:25:00'),
+(4, '2025-08-25 09:30:00', '2025-08-25 12:30:00'),
+(5, '2025-08-25 12:00:00', '2025-08-25 13:00:00'),
+(6, '2025-08-25 10:16:00', '2025-08-25 13:15:00'),
+(7, '2025-08-25 11:00:00', '2025-08-25 14:00:00'),
+(8, '2025-08-25 11:35:00', '2025-08-25 14:30:00'),
+(9, '2025-08-25 13:00:00', '2025-08-25 15:00:00'),
+(10, '2025-08-25 12:30:00', '2025-08-25 15:30:00'),
+(1, '2025-08-26 08:00:00', '2025-08-26 10:00:00'),
+(2, '2025-08-26 09:00:00', '2025-08-26 11:00:00'),
+(3, '2025-08-26 10:00:00', '2025-08-26 12:00:00'),
+(4, '2025-08-26 09:00:00', '2025-08-26 13:00:00'),
+(5, '2025-08-26 12:00:00', '2025-08-26 14:00:00'),
+(6, '2025-08-26 13:00:00', '2025-08-26 17:00:00'),
+(7, '2025-08-26 14:00:00', '2025-08-26 16:00:00'),
+(8, '2025-08-26 15:30:00', '2025-08-26 17:40:00'),
+(9, '2025-08-26 16:00:00', NULL), -- Veículo ainda no estacionamento
+(10, '2025-08-26 17:50:00', '2025-08-26 18:40:00');
+
+--consultar tabela de clientes
+  
+select * from cliente 
+select * from veiculo order by modelo asc;
+select * from registro order by entrada asc limit  2;
+select v.*,c.nome as nome_cliente from veiculo v 
+join registro r on v.id_veiculo = r.id_veiculo
+where r.saida is null;
+--alterar tabela cliente
+alter table  cliente add column data_nascimento date;
+UPDATE clientes SET data_nascimento = '1981-06-04' WHERE id_cliente = 1;
+UPDATE clientes SET data_nascimento = '2007-06-06' WHERE id_cliente = 2;
+UPDATE clientes SET data_nascimento = '1978-02-22' WHERE id_cliente = 3;
+UPDATE clientes SET data_nascimento = '1994-07-20' WHERE id_cliente = 4;
+UPDATE clientes SET data_nascimento = '1979-03-06' WHERE id_cliente = 5;
+UPDATE clientes SET data_nascimento = '1924-05-03' WHERE id_cliente = 6;
+UPDATE clientes SET data_nascimento = '1977-09-27' WHERE id_cliente = 7;
+UPDATE clientes SET data_nascimento = '2000-03-14' WHERE id_cliente = 8;
+UPDATE clientes SET data_nascimento = '1988-11-15' WHERE id_cliente = 9;
+UPDATE clientes SET data_nascimento = '1991-04-25' WHERE id_cliente = 10;
+--deletar colunas
+alter table cliente drop column endereco;
+delete from cliente where id_cliente = 6
+ 
+
+bancos de dados de estacionameto e clientes.sql
+Exibindo bancos de dados de estacionameto e clientes.sql…
